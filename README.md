@@ -15,7 +15,9 @@
 python server.py
 ```
 
-浏览器会打开 **http://localhost:8000**。首页提供 6 个互动工具入口与案例展示，点击「立即咨询」可打开联系弹窗。
+浏览器会打开 **http://localhost:8000**。
+
+首页提供 6 个互动工具入口与案例展示，点击「立即咨询」可打开联系弹窗。
 
 - 可选依赖（热重载提示）：`pip install watchdog`
 - 仅静态预览：也可用 `python -m http.server` 或 Live Server；统计 API 仅在 `server.py` 下可用。
