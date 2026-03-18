@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "id": "case-001",
+      "industry": "金融行业",
+      "emoji": "🏦",
+      "title": "银行报表自动化处理",
+      "challenge": "某股份制银行每月需人工汇整来自 12 个系统的 5000+ 份业绩报表，平均耗时 3 周，人工录入错误率高达 8%。",
+      "solution": "Python 自动化抓取 + pandas 数据整合 + 自动邮件分发，配合 AI 异常检测模块",
+      "results": {
+        "timeSaved": "95%",
+        "errorRate": "0.2%",
+        "annualSaving": "¥86万"
+      },
+      "tags": ["Python", "pandas", "邮件自动化", "AI异常检测"]
+    },
+    {
+      "id": "case-002",
+      "industry": "制造业",
+      "emoji": "🏭",
+      "title": "供应链文档智能解析",
+      "challenge": "某制造企业每日收到 200+ 份来自不同供应商格式各异的采购单据，人工录入系统需要 4 名专职员工，每月出错返工率约 12%。",
+      "solution": "基于 OCR + NLP 的智能单据解析系统，自动识别字段并写入 ERP，异常单据推送人工复核",
+      "results": {
+        "timeSaved": "88%",
+        "errorRate": "1.5%",
+        "annualSaving": "¥52万"
+      },
+      "tags": ["OCR", "NLP", "ERP集成", "Python"]
+    },
+    {
+      "id": "case-003",
+      "industry": "人力资源",
+      "emoji": "👔",
+      "title": "简历筛选与人才匹配",
+      "challenge": "某互联网公司 HR 团队每季度处理 10000+ 份简历，筛选耗时占据 HR 60% 的工作时长，优质候选人平均响应时间超过 5 天。",
+      "solution": "AI 简历解析 + 岗位匹配度评分 + 自动发送初筛通知，HR 只需审核高分候选人",
+      "results": {
+        "timeSaved": "75%",
+        "errorRate": "—",
+        "annualSaving": "¥34万"
+      },
+      "tags": ["AI匹配", "简历解析", "自动通知", "NLP"]
+    },
+    {
+      "id": "case-004",
+      "industry": "医疗健康",
+      "emoji": "🏥",
+      "title": "医疗报告批量结构化",
+      "challenge": "某医疗集团需每周汇整 3000+ 份影像报告和检验单进行质控，纯文字报告无法快速检索关键指标，质控周期长达 2 周。",
+      "solution": "医疗 NLP 模型提取关键指标，自动结构化入库，异常值自动预警推送主任医师",
+      "results": {
+        "timeSaved": "80%",
+        "errorRate": "0%",
+        "annualSaving": "¥120万"
+      },
+      "tags": ["医疗NLP", "结构化提取", "异常预警", "Python"]
+    },
+    {
+      "id": "case-005",
+      "industry": "法律服务",
+      "emoji": "⚖️",
+      "title": "合同智能审查系统",
+      "challenge": "某律所每月审查 500+ 份商业合同，初审平均耗时 2 小时/份，律师大量时间花费在格式审查和常规条款核对上。",
+      "solution": "合同条款智能提取 + 风险点自动标注 + 缺失条款提醒，律师聚焦高价值审核工作",
+      "results": {
+        "timeSaved": "70%",
+        "errorRate": "漏项减少98%",
+        "annualSaving": "¥68万"
+      },
+      "tags": ["合同解析", "风险识别", "LLM", "Python"]
+    },
+    {
+      "id": "case-006",
+      "industry": "电商零售",
+      "emoji": "🛒",
+      "title": "多平台数据自动汇总",
+      "challenge": "某品牌电商运营团队每天需从天猫、京东、抖音等 6 个平台手动下载数据，整合成报表约耗时 3 小时，数据口径不统一问题频发。",
+      "solution": "多平台 API 自动拉取 + 统一数据模型 + 自动生成日报并推送至企业微信",
+      "results": {
+        "timeSaved": "92%",
+        "errorRate": "0%",
+        "annualSaving": "¥28万"
+      },
+      "tags": ["API集成", "数据汇总", "企业微信", "自动报表"]
+    }
+  ]
+}

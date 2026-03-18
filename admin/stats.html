@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统计看板 - 自动化价值展示中心</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .stats-page { max-width: 960px; margin: 0 auto; padding: var(--space-8, 2rem); }
+    .stats-page h1 { font-size: var(--text-2xl, 1.5rem); margin-bottom: var(--space-6); }
+    .stats-section { margin-bottom: var(--space-8); }
+    .stats-section h2 { font-size: var(--text-xl); margin-bottom: var(--space-4); color: var(--color-primary, #1a6fc4); }
+    .stats-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    .stats-table th, .stats-table td { padding: var(--space-2) var(--space-3); text-align: left; border-bottom: 1px solid var(--color-border-light, #e5e7eb); }
+    .stats-table th { font-weight: 600; background: var(--color-bg, #f9fafb); }
+    .stats-table tr:hover td { background: rgba(0,0,0,.02); }
+    .stats-filters { display: flex; gap: var(--space-3); align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; }
+    .stats-filters label { font-size: var(--text-sm); }
+    .stats-filters input { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border-light); border-radius: var(--radius-sm, 4px); }
+    .stats-filters button { padding: var(--space-2) var(--space-4); background: var(--color-primary); color: #fff; border: none; border-radius: var(--radius-md); cursor: pointer; font-size: var(--text-sm); }
+    .stats-filters button:hover { opacity: 0.9; }
+    .stats-loading { color: var(--color-text-secondary); }
+    .stats-error { color: var(--color-danger, #dc3545); }
+    .stats-back { display: inline-block; margin-bottom: var(--space-4); color: var(--color-primary); text-decoration: none; font-size: var(--text-sm); }
+    .stats-back:hover { text-decoration: underline; }
+    .recent-consult-item { padding: var(--space-3); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); margin-bottom: var(--space-2); font-size: var(--text-sm); }
+    .recent-consult-item .ts { color: var(--color-text-muted); }
+    .recent-consult-item .last-tools { margin-top: var(--space-1); }
+  </style>
+</head>
+<body>
+  <div class="stats-page">
+    <a href="../index.html" class="stats-back">← 返回首页</a>
+    <h1>统计看板</h1>
+
+    <div class="stats-filters">
+      <label>从 <input type="date" id="filter-from"></label>
+      <label>到 <input type="date" id="filter-to"></label>
+      <button type="button" id="btn-refresh">刷新</button>
+    </div>
+
+    <div id="stats-content">
+      <p class="stats-loading">加载中…</p>
+    </div>
+
+    <div class="stats-section" id="section-by-day" style="display:none;">
+      <h2>按日统计</h2>
+      <table class="stats-table" id="table-by-day">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>页面浏览 (page_view)</th>
+            <th>计算器使用 (calculator_use)</th>
+            <th>咨询点击 (consult_click)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="stats-section" id="section-by-event" style="display:none;">
+      <h2>事件汇总</h2>
+      <table class="stats-table" id="table-by-event">
+        <thead>
+          <tr><th>事件</th><th>次数</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="stats-section" id="section-by-tool" style="display:none;">
+      <h2>按工具统计</h2>
+      <table class="stats-table" id="table-by-tool">
+        <thead>
+          <tr><th>工具</th><th>次数</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="stats-section" id="section-consult" style="display:none;">
+      <h2>最近咨询点击（热线索）</h2>
+      <p style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-bottom:var(--space-3);">优先跟进：用过计算器后点击咨询的用户。</p>
+      <div id="recent-consult-list"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var content = document.getElementById('stats-content');
+      var sectionByDay = document.getElementById('section-by-day');
+      var sectionByEvent = document.getElementById('section-by-event');
+      var sectionByTool = document.getElementById('section-by-tool');
+      var sectionConsult = document.getElementById('section-consult');
+
+      function buildQuery() {
+        var from = document.getElementById('filter-from').value;
+        var to = document.getElementById('filter-to').value;
+        var q = [];
+        if (from) q.push('from=' + encodeURIComponent(from));
+        if (to) q.push('to=' + encodeURIComponent(to));
+        return q.length ? '/api/stats?' + q.join('&') : '/api/stats';
+      }
+
+      function render(data) {
+        content.innerHTML = '';
+        sectionByDay.style.display = 'none';
+        sectionByEvent.style.display = 'none';
+        sectionByTool.style.display = 'none';
+        sectionConsult.style.display = 'none';
+
+        var byDay = data.by_day || {};
+        var days = Object.keys(byDay).sort();
+        if (days.length) {
+          sectionByDay.style.display = 'block';
+          var tbody = sectionByDay.querySelector('#table-by-day tbody');
+          tbody.innerHTML = '';
+          days.forEach(function (day) {
+            var row = byDay[day];
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + day + '</td><td>' + (row.page_view || 0) + '</td><td>' + (row.calculator_use || 0) + '</td><td>' + (row.consult_click || 0) + '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+
+        var byEvent = data.by_event || {};
+        if (Object.keys(byEvent).length) {
+          sectionByEvent.style.display = 'block';
+          var tbodyEvent = sectionByEvent.querySelector('#table-by-event tbody');
+          tbodyEvent.innerHTML = '';
+          ['page_view', 'calculator_use', 'consult_click'].forEach(function (ev) {
+            if (byEvent[ev] != null) {
+              var tr = document.createElement('tr');
+              tr.innerHTML = '<td>' + ev + '</td><td>' + byEvent[ev] + '</td>';
+              tbodyEvent.appendChild(tr);
+            }
+          });
+        }
+
+        var byTool = data.by_tool || {};
+        var tools = Object.keys(byTool).sort();
+        if (tools.length) {
+          sectionByTool.style.display = 'block';
+          var tbodyTool = sectionByTool.querySelector('#table-by-tool tbody');
+          tbodyTool.innerHTML = '';
+          tools.forEach(function (tool) {
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + tool + '</td><td>' + byTool[tool] + '</td>';
+            tbodyTool.appendChild(tr);
+          });
+        }
+
+        var recent = data.recent_consult || [];
+        if (recent.length) {
+          sectionConsult.style.display = 'block';
+          var list = document.getElementById('recent-consult-list');
+          list.innerHTML = '';
+          recent.forEach(function (item) {
+            var div = document.createElement('div');
+            div.className = 'recent-consult-item';
+            var toolsStr = Array.isArray(item.last_tools) && item.last_tools.length ? item.last_tools.join('、') : '—';
+            div.innerHTML = '<div class="ts">' + (item.ts || '') + '</div><div>来源：' + (item.source || '—') + '</div><div class="last-tools">使用过的工具：' + toolsStr + '</div>';
+            list.appendChild(div);
+          });
+        }
+
+        if (!days.length && !Object.keys(byEvent).length && !tools.length && !recent.length) {
+          content.innerHTML = '<p class="stats-loading">暂无数据。使用计算器并点击咨询后，这里会显示统计与热线索。</p>';
+        }
+      }
+
+      function load() {
+        content.innerHTML = '<p class="stats-loading">加载中…</p>';
+        fetch(buildQuery())
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            render(data);
+          })
+          .catch(function () {
+            content.innerHTML = '<p class="stats-error">请求失败，请确保已启动 server.py 且同源访问。</p>';
+          });
+      }
+
+      document.getElementById('btn-refresh').addEventListener('click', load);
+      load();
+    })();
+  </script>
+</body>
+</html>

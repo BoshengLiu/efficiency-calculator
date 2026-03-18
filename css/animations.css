@@ -1,0 +1,306 @@
+/* ============================================================
+   animations.css — 动画效果
+   ============================================================ */
+
+/* ── 基础关键帧 ───────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.06); opacity: .85; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes progressIndeterminate {
+  0%   { left: -40%; width: 40%; }
+  50%  { left: 60%; width: 30%; }
+  100% { left: 100%; width: 10%; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 页面入场动画 ─────────────────────────────────────────── */
+body.page-entering {
+  opacity: 0;
+}
+
+body.page-visible {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* ── 滚动触发入场 ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }
+.reveal--delay-4 { transition-delay: 0.4s; }
+.reveal--delay-5 { transition-delay: 0.5s; }
+
+.reveal--from-right {
+  transform: translateX(28px);
+}
+
+.reveal--from-left {
+  transform: translateX(-28px);
+}
+
+.reveal--scale {
+  transform: scale(0.94);
+}
+
+.reveal--from-right.reveal--visible,
+.reveal--from-left.reveal--visible,
+.reveal--scale.reveal--visible {
+  transform: none;
+}
+
+/* ── 工具卡片 Hover 动效（仅桌面端） ─────────────────────── */
+@media (hover: hover) {
+  .tool-card {
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .tool-card:hover .tool-card__icon {
+    transform: scale(1.08) rotate(-3deg);
+    transition: transform 0.3s ease;
+  }
+
+  .tool-card:hover .tool-card__title {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+  }
+}
+
+/* ── 三阶段页面跳转过渡 ──────────────────────────────────── */
+
+/* 阶段1：卡片高亮放大 */
+.card-zoom--stage1 {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 0 4px var(--color-primary),
+              0 12px 40px rgba(26,111,196,.5) !important;
+  border-color: var(--color-primary) !important;
+  z-index: 10;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* 阶段2：遮罩层淡入 */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, var(--color-bg-dark), #1a3a6e);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-transition-overlay--active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* 阶段3：旋转加载圈 */
+.page-transition-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.page-transition-spinner--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-transition-spinner__ring {
+  width: 52px;
+  height: 52px;
+  border: 4px solid rgba(255,255,255,.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.page-transition-spinner__text {
+  color: rgba(255,255,255,.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── 数字滚动计数器 ──────────────────────────────────────── */
+.counter-value {
+  display: inline-block;
+  transition: all 0.1s ease;
+}
+
+/* ── 进度条动效 ──────────────────────────────────────────── */
+.progress__bar--indeterminate {
+  position: relative;
+  width: 100% !important;
+  background: var(--color-border-light);
+  overflow: hidden;
+}
+
+.progress__bar--indeterminate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  animation: progressIndeterminate 1.5s ease-in-out infinite;
+  border-radius: var(--radius-full);
+}
+
+/* ── 骨架屏 (加载占位) ──────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border-light) 25%,
+    var(--color-bg-alt) 50%,
+    var(--color-border-light) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: var(--radius);
+}
+
+.skeleton--text {
+  height: 1em;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+.skeleton--title {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: 0.75em;
+}
+
+.skeleton--rect {
+  height: 200px;
+  width: 100%;
+}
+
+/* ── Banner 装饰动效 ─────────────────────────────────────── */
+.banner__decoration {
+  animation: pulse 8s ease-in-out infinite;
+}
+
+/* ── 图表结果更新闪烁 ─────────────────────────────────────── */
+.result-updated {
+  animation: countUp 0.35s ease;
+}
+
+/* ── 错误状态抖动 ────────────────────────────────────────── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* ── 成功状态缩放 ────────────────────────────────────────── */
+@keyframes successPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.success-pop {
+  animation: successPop 0.4s ease;
+}
+
+/* ── 导航菜单滑入 ────────────────────────────────────────── */
+.nav__mobile-menu {
+  animation: fadeInDown 0.25s ease;
+}
+
+/* ── 标签选择动效 ────────────────────────────────────────── */
+.tag-option {
+  transition: all 0.15s ease;
+}
+
+.tag-option--selected {
+  animation: scaleIn 0.15s ease;
+}

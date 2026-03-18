@@ -1,0 +1,440 @@
+/* ============================================================
+   responsive.css — 响应式设计
+   断点：1200px（大桌面）/ 992px（桌面）/ 768px（平板）/ 480px（手机）
+   ============================================================ */
+
+/* ── 大桌面 (≤1200px) ────────────────────────────────────── */
+@media (max-width: 1200px) {
+  :root {
+    --container-max: 960px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+/* ── 桌面 (≤992px) ───────────────────────────────────────── */
+@media (max-width: 992px) {
+  :root {
+    --container-max: 100%;
+  }
+
+  .container {
+    padding: 0 var(--space-5);
+  }
+
+  /* 工具网格：2列 */
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+
+  /* 案例网格：2列 */
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 工具布局：单列 */
+  .tool-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* 对比网格：1列 */
+  .compare-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  /* 导航：隐藏菜单，显示汉堡 */
+  .nav__menu {
+    display: none;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* Banner */
+  .banner__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .banner__decoration {
+    display: none;
+  }
+
+  /* 页脚网格：2列 */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── 平板 (≤768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* 章节间距缩小 */
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  .section__title {
+    font-size: var(--text-2xl);
+  }
+
+  /* 工具网格：1列 */
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* 案例网格：1列 */
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 统计数字：2列 */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Banner */
+  .banner {
+    padding-top: calc(var(--nav-height) + var(--space-8));
+    padding-bottom: var(--space-12);
+    min-height: auto;
+  }
+
+  .banner__content {
+    max-width: 100%;
+  }
+
+  .banner__actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .banner__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* CTA 区域 */
+  .cta-section__title {
+    font-size: var(--text-2xl);
+  }
+
+  .cta-section__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-section__actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* 页脚 */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  /* 工具页 Hero */
+  .tool-hero__content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tool-hero__title {
+    font-size: var(--text-2xl);
+  }
+
+  /* 结果指标网格 */
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 案例卡片指标 */
+  .case-card__metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 图表高度缩小 */
+  .chart-container {
+    height: 220px;
+  }
+
+  /* 工具导航 */
+  .tool-nav__title {
+    font-size: var(--text-base);
+  }
+
+  /* 段落文字 */
+  .section__subtitle {
+    font-size: var(--text-base);
+  }
+}
+
+/* ── 手机 (≤480px) ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .section {
+    padding: var(--space-10) 0;
+  }
+
+  /* 统计数字：2列 */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .stat-item__value {
+    font-size: var(--text-3xl);
+  }
+
+  /* Banner */
+  .banner__title {
+    font-size: 1.75rem;
+  }
+
+  .banner__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .banner__label {
+    font-size: var(--text-xs);
+  }
+
+  /* 按钮 */
+  .btn--lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+  }
+
+  /* 工具卡片 */
+  .tool-card__header {
+    padding: var(--space-4);
+  }
+
+  .tool-card__body {
+    padding: var(--space-4);
+  }
+
+  .tool-card__footer {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  /* 结果指标网格 */
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 问卷选项 */
+  .question-option {
+    padding: var(--space-3);
+  }
+
+  /* 文件上传 */
+  .file-upload {
+    padding: var(--space-6);
+  }
+
+  /* 图表高度 */
+  .chart-container {
+    height: 180px;
+  }
+
+  /* 工具页 Hero 图标 */
+  .tool-hero__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* CTA 标题 */
+  .cta-section__title {
+    font-size: var(--text-xl);
+  }
+
+  /* 案例卡片指标 */
+  .case-card__metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 段落间距 */
+  .section__header {
+    margin-bottom: var(--space-8);
+  }
+
+  /* 节省成本计算器等：结果卡片 */
+  .result-card__value {
+    font-size: var(--text-3xl);
+  }
+
+  /* 对比卡片 */
+  .compare-item {
+    padding: var(--space-4);
+  }
+}
+
+/* ── 移动端禁用 hover 效果 ───────────────────────────────── */
+@media (hover: none) {
+  .tool-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-border-light);
+  }
+
+  .btn--primary:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn--accent:hover {
+    transform: none;
+  }
+
+  .btn--outline:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .case-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tool-card:hover .tool-card__icon {
+    transform: none;
+  }
+
+  .tool-card:hover .tool-card__title {
+    color: var(--color-text);
+  }
+
+  /* 移动端激活态 */
+  .tool-card:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow);
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ── 移动端导航菜单 ──────────────────────────────────────── */
+@media (max-width: 992px) {
+  .nav__mobile-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border-light);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    animation: fadeInDown 0.25s ease;
+  }
+
+  .nav__mobile-menu .nav__link {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .nav__mobile-menu .nav__cta {
+    display: block;
+    margin-left: 0;
+    margin-top: var(--space-2);
+  }
+
+  .nav__mobile-menu .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 汉堡菜单激活动效 */
+  .nav__hamburger--active .nav__hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .nav__hamburger--active .nav__hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav__hamburger--active .nav__hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* ── 高对比度适配 ────────────────────────────────────────── */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #666;
+    --color-text-secondary: #333;
+  }
+
+  .tool-card,
+  .card,
+  .case-card {
+    border-width: 2px;
+  }
+}
+
+/* ── 减少动画（无障碍） ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── 大字体模式 ──────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  :root {
+    --container-max: 1320px;
+  }
+
+  .banner__title {
+    font-size: 4rem;
+  }
+}

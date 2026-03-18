@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自动化价值展示中心 - Python自动化专家 | 文档处理与AI应用</title>
+  <meta name="description" content="专注文档处理与AI应用的Python自动化专家。通过6个互动计算器，量化自动化为您节省的成本、时间和错误率。立即体验，发现您的自动化价值。">
+  <meta name="keywords" content="Python自动化,文档处理,AI应用,RPA,成本节省,效率提升,自动化价值">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="自动化价值展示中心 - Python自动化专家">
+  <meta property="og:description" content="通过互动工具量化自动化价值，专注文档处理与AI应用">
+  <meta property="og:type" content="website">
+
+  <!-- 关键资源预加载 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" as="script">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- favicon 占位 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body class="page-entering">
+
+<!-- ═══════════════════════════════════════════════════════════
+     导航
+═══════════════════════════════════════════════════════════ -->
+<header>
+  <nav class="nav" aria-label="主导航">
+    <div class="container nav__inner">
+      <!-- Logo -->
+      <a href="#" class="nav__logo" aria-label="自动化价值展示中心首页">
+        <div class="nav__logo-icon" aria-hidden="true">⚡</div>
+        <span>自动化价值中心</span>
+      </a>
+
+      <!-- 桌面菜单 -->
+      <div class="nav__menu" role="menubar">
+        <a href="#value" class="nav__link" data-section="value" role="menuitem">核心价值</a>
+        <a href="#tools" class="nav__link" data-section="tools" role="menuitem">互动工具</a>
+        <a href="#cases" class="nav__link" data-section="cases" role="menuitem">成功案例</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="nav__cta">
+        <button class="btn btn--accent btn--sm" data-action="consult">立即咨询</button>
+      </div>
+
+      <!-- 移动端汉堡 -->
+      <button class="nav__hamburger" aria-label="打开菜单" aria-expanded="false">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<!-- ═══════════════════════════════════════════════════════════
+     1. Banner 区域
+═══════════════════════════════════════════════════════════ -->
+<section class="banner" id="banner" aria-labelledby="banner-title">
+  <div class="container">
+    <div class="banner__content">
+      <div class="banner__label reveal">
+        <span>🐍</span> Python 自动化专家 · 专注效率提升
+      </div>
+      <h1 class="banner__title reveal reveal--delay-1" id="banner-title">
+        让重复工作<span class="banner__title-accent">自动化</span>，<br>
+        让您的团队专注<span class="banner__title-accent">核心价值</span>
+      </h1>
+      <p class="banner__subtitle reveal reveal--delay-2">
+        Python自动化专家 | 专注文档处理与AI应用 | 为您量化效率提升
+      </p>
+      <div class="banner__actions reveal reveal--delay-3">
+        <a href="#tools" class="btn btn--accent btn--lg" onclick="smoothScrollTo('tools')">
+          开始探索您的自动化潜力
+        </a>
+        <button class="btn btn--outline-white btn--lg" data-action="consult">
+          立即咨询
+        </button>
+      </div>
+
+      <!-- 快速统计 -->
+      <div style="display:flex;gap:var(--space-8);margin-top:var(--space-10);flex-wrap:wrap;" class="reveal reveal--delay-4">
+        <div>
+          <div style="font-size:2rem;font-weight:900;color:#fff;">
+            <span data-counter="85" data-suffix="%" data-duration="2000">0%</span>
+          </div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,.65);">平均时间节省</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;font-weight:900;color:#fff;">
+            <span data-counter="50" data-suffix="+" data-duration="2200">0+</span>
+          </div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,.65);">成功项目</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;font-weight:900;color:var(--color-accent);">
+            <span data-counter="90" data-suffix="%" data-duration="1800">0%</span>
+          </div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,.65);">错误率降低</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;font-weight:900;color:var(--color-accent);">
+            <span data-counter="300" data-suffix="%" data-duration="2400">0%</span>
+          </div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,.65);">平均 ROI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="banner__decoration" aria-hidden="true"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     2. 核心价值主张
+═══════════════════════════════════════════════════════════ -->
+<section class="section section--alt" id="value" aria-labelledby="value-title">
+  <div class="container">
+    <header class="section__header reveal">
+      <div class="section__label">核心价值主张</div>
+      <h2 class="section__title" id="value-title">您的团队是否正在面对这些挑战？</h2>
+      <p class="section__subtitle">这些痛点，我们都有成熟的自动化解决方案</p>
+    </header>
+
+    <div class="compare-grid reveal">
+      <!-- 问题 -->
+      <div class="compare-item compare-item--problem">
+        <div class="compare-item__icon">😓</div>
+        <div class="compare-item__title">您现在面临的挑战</div>
+        <ul class="compare-item__list">
+          <li>每天重复处理大量文档、表格和数据录入</li>
+          <li>人工错误频繁，返工耗费大量精力</li>
+          <li>跨系统数据导出/汇整占据员工半天时间</li>
+          <li>报表生成慢，管理层决策信息滞后</li>
+          <li>优秀员工浪费在低价值重复工作上</li>
+          <li>业务规模扩大但效率没有相应提升</li>
+        </ul>
+      </div>
+
+      <!-- 解决方案 -->
+      <div class="compare-item compare-item--solution">
+        <div class="compare-item__icon">🚀</div>
+        <div class="compare-item__title">自动化后的改变</div>
+        <ul class="compare-item__list">
+          <li>文档智能解析，秒级完成人工需数小时的工作</li>
+          <li>AI辅助校验，错误率降低至接近零</li>
+          <li>多系统数据自动汇整，实时更新</li>
+          <li>一键生成报表并自动推送，决策更快</li>
+          <li>员工专注创造性工作，满意度提升</li>
+          <li>业务扩张无需等比例增加人力</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 服务能力标签 -->
+    <div style="text-align:center;margin-top:var(--space-10);" class="reveal">
+      <h3 style="font-size:var(--text-xl);font-weight:700;margin-bottom:var(--space-5);">我们的核心技术能力</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;">
+        <span class="badge badge--primary" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">🐍 Python 自动化</span>
+        <span class="badge badge--primary" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">📄 文档智能解析</span>
+        <span class="badge badge--primary" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">🤖 AI/LLM 集成</span>
+        <span class="badge badge--accent" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">🔄 RPA 流程自动化</span>
+        <span class="badge badge--accent" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">📊 数据分析与可视化</span>
+        <span class="badge badge--success" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">🔗 系统接口集成</span>
+        <span class="badge badge--success" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">📧 邮件/通知自动化</span>
+        <span class="badge badge--primary" style="padding:var(--space-2) var(--space-4);font-size:var(--text-sm);">🗄️ 数据库自动化</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. 互动工具展示区
+═══════════════════════════════════════════════════════════ -->
+<section class="section" id="tools" aria-labelledby="tools-title">
+  <div class="container">
+    <header class="section__header reveal">
+      <div class="section__label">互动工具</div>
+      <h2 class="section__title" id="tools-title">用数字说话，量化您的自动化价值</h2>
+      <p class="section__subtitle">6个专业工具，帮您从多个维度评估自动化能为您带来的具体收益</p>
+    </header>
+
+    <div class="tools-grid">
+
+      <!-- 工具卡片1：成本计算器 -->
+      <article class="tool-card reveal" data-tool-preview="cost">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#1a6fc4,#145aa0);">
+            <svg viewBox="0 0 24 24" fill="white"><rect x="3" y="2" width="18" height="20" rx="3" fill="none" stroke="white" stroke-width="1.5"/><rect x="6" y="5" width="12" height="4" rx="1.5" fill="white"/><circle cx="7.5" cy="13.5" r="1.5" fill="white"/><circle cx="12" cy="13.5" r="1.5" fill="white"/><circle cx="16.5" cy="13.5" r="1.5" fill="white"/><circle cx="7.5" cy="17.5" r="1.5" fill="white"/><circle cx="12" cy="17.5" r="1.5" fill="white"/><circle cx="16.5" cy="17.5" r="1.5" fill="white"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">💰 节省成本计算器</div>
+            <div class="tool-card__desc">量化自动化为您节省的人力成本</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div class="form-group">
+            <label class="form-label" for="preview-cost-slider">
+              <span>团队规模（人）</span>
+              <span class="form-label__value" id="preview-cost-val">10</span>
+            </label>
+            <input type="range" class="slider tool-card__slider" id="preview-cost-slider"
+              min="1" max="200" step="1" value="10" aria-label="团队规模">
+          </div>
+          <div class="tool-card__preview">
+            <div class="tool-card__preview-value" id="preview-cost-result">¥76.8万</div>
+            <div class="tool-card__preview-label">预计年节省人力成本</div>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/cost-calculator/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/cost-calculator/index.html" aria-label="完整体验节省成本计算器">
+            完整体验 →
+          </a>
+        </div>
+      </article>
+
+      <!-- 工具卡片2：时间计算器 -->
+      <article class="tool-card reveal reveal--delay-1" data-tool-preview="time">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#17a2b8,#148a9e);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/><path d="M12 2v2"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">⏰ 时间解放计算器</div>
+            <div class="tool-card__desc">看看自动化能释放多少宝贵时间</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div class="form-group">
+            <label class="form-label" for="preview-time-slider">
+              <span>团队规模（人）</span>
+              <span class="form-label__value" id="preview-time-val">8</span>
+            </label>
+            <input type="range" class="slider tool-card__slider" id="preview-time-slider"
+              min="1" max="100" step="1" value="8" aria-label="团队规模">
+          </div>
+          <div class="tool-card__preview">
+            <div class="tool-card__preview-value" id="preview-time-result">3,536 小时</div>
+            <div class="tool-card__preview-label">每年节省总工时</div>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/time-calculator/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/time-calculator/index.html" aria-label="完整体验时间解放计算器">
+            完整体验 →
+          </a>
+        </div>
+      </article>
+
+      <!-- 工具卡片3：错误率计算器 -->
+      <article class="tool-card reveal reveal--delay-2" data-tool-preview="error">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#28a745,#1e8035);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11 4.5-.85 8-5.75 8-11V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">🛡️ 错误率降低计算器</div>
+            <div class="tool-card__desc">量化自动化在提升精确性上的优势</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div class="form-group">
+            <label class="form-label" for="preview-error-slider">
+              <span>当前错误率（%）</span>
+              <span class="form-label__value" id="preview-error-val">5</span>
+            </label>
+            <input type="range" class="slider tool-card__slider" id="preview-error-slider"
+              min="0.5" max="20" step="0.5" value="5" aria-label="当前错误率">
+          </div>
+          <div class="tool-card__preview">
+            <div class="tool-card__preview-value" id="preview-error-result">¥75.6万</div>
+            <div class="tool-card__preview-label">年节省错误成本</div>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/error-calculator/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/error-calculator/index.html" aria-label="完整体验错误率降低计算器">
+            完整体验 →
+          </a>
+        </div>
+      </article>
+
+      <!-- 工具卡片4：可行性评估 -->
+      <article class="tool-card reveal reveal--delay-3">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#fd7e14,#e06500);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 9h10M7 12h7M7 15h5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">📋 可行性评估器</div>
+            <div class="tool-card__desc">快速判断您的需求是否适合自动化</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-sm);color:var(--color-text-secondary);">
+              <span>频率</span><span>规则性</span><span>数据量</span><span>数字化</span><span>影响度</span>
+            </div>
+            <div class="level-indicator">
+              <div class="level-bar level-bar--active-high"></div>
+              <div class="level-bar level-bar--active-high"></div>
+              <div class="level-bar level-bar--active-high"></div>
+              <div class="level-bar"></div>
+            </div>
+          </div>
+          <div class="tool-card__preview">
+            <div class="tool-card__preview-value" style="color:var(--color-success);">🚀 较高可行性</div>
+            <div class="tool-card__preview-label">回答5个问题获取精确评分</div>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/feasibility-assessment/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/feasibility-assessment/index.html" aria-label="完整体验可行性评估器">
+            开始评估 →
+          </a>
+        </div>
+      </article>
+
+      <!-- 工具卡片5：AI潜力探测 -->
+      <article class="tool-card reveal reveal--delay-4">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#6f42c1,#5a329e);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="6" width="16" height="12" rx="3"/><circle cx="9" cy="10" r="1.5" fill="white"/><circle cx="15" cy="10" r="1.5" fill="white"/><path d="M8 14c1 1.5 7 1.5 8 0"/><path d="M8 6V4M16 6V4"/><path d="M4 12H2M22 12h-2"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">🤖 AI潜力探测器</div>
+            <div class="tool-card__desc">探索AI如何为您的业务赋能</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="tag-option tag-option--selected" style="pointer-events:none;font-size:0.75rem;padding:4px 10px;min-height:32px;">📄 文档处理</span>
+            <span class="tag-option tag-option--selected" style="pointer-events:none;font-size:0.75rem;padding:4px 10px;min-height:32px;">📊 数据分析</span>
+            <span class="tag-option" style="pointer-events:none;font-size:0.75rem;padding:4px 10px;min-height:32px;">👥 客户服务</span>
+            <span class="tag-option" style="pointer-events:none;font-size:0.75rem;padding:4px 10px;min-height:32px;">💰 财务</span>
+          </div>
+          <div class="tool-card__preview">
+            <div class="tool-card__preview-value" style="font-size:var(--text-lg);color:var(--color-primary);">智能文档解析 100%</div>
+            <div class="tool-card__preview-label">最高匹配AI应用场景</div>
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/ai-potential-detection/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/ai-potential-detection/index.html" aria-label="完整体验AI潜力探测器">
+            探索AI机会 →
+          </a>
+        </div>
+      </article>
+
+      <!-- 工具卡片6：文档解析演示 -->
+      <article class="tool-card reveal reveal--delay-5">
+        <div class="tool-card__header">
+          <div class="tool-card__icon" style="background:linear-gradient(135deg,#dc3545,#b02a37);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8L14 2z"/><polyline points="14,2 14,8 20,8"/><path d="M8 13h8M8 17h5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="tool-card__title">📄 文档解析演示器</div>
+            <div class="tool-card__desc">在线演示核心文档处理能力</div>
+          </div>
+        </div>
+        <div class="tool-card__body">
+          <div style="background:var(--color-bg-alt);border-radius:var(--radius);padding:var(--space-4);text-align:center;border:2px dashed var(--color-border);">
+            <div style="font-size:2rem;margin-bottom:var(--space-2);">📄</div>
+            <div style="font-size:var(--text-sm);color:var(--color-text-secondary);">支持 PDF · DOCX · TXT</div>
+          </div>
+          <div class="security-badge" style="justify-content:center;">
+            🔒 文件仅在本地处理，零上传风险
+          </div>
+        </div>
+        <div class="tool-card__footer">
+          <a href="tools/document-parser-demo/index.html" class="btn btn--primary tool-card__cta"
+            data-tool-link="tools/document-parser-demo/index.html" aria-label="完整体验文档解析演示器">
+            上传体验 →
+          </a>
+        </div>
+      </article>
+
+    </div><!-- /tools-grid -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. 案例与成果展示
+═══════════════════════════════════════════════════════════ -->
+<section class="section section--alt" id="cases" aria-labelledby="cases-title">
+  <div class="container">
+    <header class="section__header reveal">
+      <div class="section__label">成功案例</div>
+      <h2 class="section__title" id="cases-title">真实案例，真实成效</h2>
+      <p class="section__subtitle">来自不同行业客户的自动化转型成果，用数据证明价值</p>
+    </header>
+
+    <!-- 案例数据由 main.js fetch data/cases.json 动态渲染 -->
+    <div id="cases-container" aria-live="polite" aria-label="案例展示区域"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. 行动召唤 (CTA)
+═══════════════════════════════════════════════════════════ -->
+<section class="cta-section" id="cta" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 class="cta-section__title reveal" id="cta-title">准备好让您的业务更高效了吗？</h2>
+    <p class="cta-section__subtitle reveal reveal--delay-1">
+      从一次免费的需求评估开始，我们将为您制定专属的自动化方案
+    </p>
+    <div class="cta-section__actions reveal reveal--delay-2">
+      <button class="btn btn--accent btn--lg" data-action="consult">
+        立即咨询 →
+      </button>
+      <a href="#tools" class="btn btn--outline-white btn--lg" onclick="smoothScrollTo('tools')">
+        先试试工具
+      </a>
+    </div>
+
+    <!-- 信任标签 -->
+    <div style="display:flex;justify-content:center;gap:var(--space-6);margin-top:var(--space-8);flex-wrap:wrap;opacity:0.8;" class="reveal reveal--delay-3">
+      <span style="color:rgba(255,255,255,.85);font-size:var(--text-sm);">✅ 免费需求评估</span>
+      <span style="color:rgba(255,255,255,.85);font-size:var(--text-sm);">✅ 24小时响应</span>
+      <span style="color:rgba(255,255,255,.85);font-size:var(--text-sm);">✅ 提供方案原型</span>
+      <span style="color:rgba(255,255,255,.85);font-size:var(--text-sm);">✅ 灵活合作模式</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. 页脚
+═══════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">⚡ 自动化价值展示中心</div>
+        <p class="footer__brand-desc">
+          专注 Python 自动化开发，为企业提供文档处理、数据自动化和 AI 应用集成解决方案。
+          让您的团队从重复劳动中解放出来，聚焦真正有价值的工作。
+        </p>
+        <div style="display:flex;gap:var(--space-3);">
+          <span class="badge badge--primary">Python</span>
+          <span class="badge badge--primary">AI/LLM</span>
+          <span class="badge badge--accent">RPA</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">互动工具</div>
+        <nav class="footer__links" aria-label="工具链接">
+          <a href="tools/cost-calculator/index.html" class="footer__link">💰 节省成本计算器</a>
+          <a href="tools/time-calculator/index.html" class="footer__link">⏰ 时间解放计算器</a>
+          <a href="tools/error-calculator/index.html" class="footer__link">🛡️ 错误率降低计算器</a>
+          <a href="tools/feasibility-assessment/index.html" class="footer__link">📋 可行性评估器</a>
+          <a href="tools/ai-potential-detection/index.html" class="footer__link">🤖 AI潜力探测器</a>
+          <a href="tools/document-parser-demo/index.html" class="footer__link">📄 文档解析演示</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer__col-title">联系我们</div>
+        <div class="footer__links">
+          <a href="mailto:contact@autovalue.cn" class="footer__link">📧 contact@autovalue.cn</a>
+          <a href="tel:+8618888888888" class="footer__link">📞 +86 188 8888 8888</a>
+          <button class="footer__link" data-action="consult" style="background:none;border:none;cursor:pointer;text-align:left;padding:0;">💬 微信在线咨询</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2024 自动化价值展示中心. All rights reserved.</span>
+      <span style="font-size:var(--text-xs);color:rgba(255,255,255,.4);">
+        Python Automation · AI Integration · RPA Solutions
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     脚本加载
+═══════════════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/utils/debounce.js"></script>
+<script src="js/utils/validators.js"></script>
+<script src="js/utils/formatters.js"></script>
+<script src="js/utils/analytics.js"></script>
+<script src="js/components/page-transition.js"></script>
+<script src="js/components/navigation.js"></script>
+<script src="js/components/modal.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+  /* 工具卡片预览交互（内联初始化） */
+  document.addEventListener('DOMContentLoaded', function () {
+    /* 成本计算器预览 */
+    var costSlider = document.getElementById('preview-cost-slider');
+    var costVal = document.getElementById('preview-cost-val');
+    var costResult = document.getElementById('preview-cost-result');
+    if (costSlider) {
+      function calcCost(v) { return Formatters.currency(parseInt(v) * 8000 * 0.25 * 12 * 0.8, true); }
+      costResult.textContent = calcCost(costSlider.value);
+      costSlider.addEventListener('input', Debounce.debounce(function () {
+        costVal.textContent = costSlider.value;
+        costResult.textContent = calcCost(costSlider.value);
+        costResult.classList.remove('result-updated'); void costResult.offsetWidth; costResult.classList.add('result-updated');
+      }, 300));
+    }
+
+    /* 时间计算器预览 */
+    var timeSlider = document.getElementById('preview-time-slider');
+    var timeVal = document.getElementById('preview-time-val');
+    var timeResult = document.getElementById('preview-time-result');
+    if (timeSlider) {
+      function calcTime(v) { return Formatters.number(Math.round(parseInt(v) * 10 * 52 * 0.85)) + ' 小时'; }
+      timeResult.textContent = calcTime(timeSlider.value);
+      timeSlider.addEventListener('input', Debounce.debounce(function () {
+        timeVal.textContent = timeSlider.value;
+        timeResult.textContent = calcTime(timeSlider.value);
+        timeResult.classList.remove('result-updated'); void timeResult.offsetWidth; timeResult.classList.add('result-updated');
+      }, 300));
+    }
+
+    /* 错误率计算器预览 */
+    var errSlider = document.getElementById('preview-error-slider');
+    var errVal = document.getElementById('preview-error-val');
+    var errResult = document.getElementById('preview-error-result');
+    if (errSlider) {
+      function calcErr(v) { return Formatters.currency(1000 * 12 * (parseFloat(v) / 100) * 700 * 0.9, true); }
+      errResult.textContent = calcErr(errSlider.value);
+      errSlider.addEventListener('input', Debounce.debounce(function () {
+        errVal.textContent = errSlider.value;
+        errResult.textContent = calcErr(errSlider.value);
+        errResult.classList.remove('result-updated'); void errResult.offsetWidth; errResult.classList.add('result-updated');
+      }, 300));
+    }
+
+    /* 工具卡片跳转按钮 */
+    document.querySelectorAll('[data-tool-link]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var url = btn.dataset.toolLink;
+        var card = btn.closest('.tool-card');
+        PageTransition.navigateTo(url, card);
+      });
+    });
+  });
+
+  /* 平滑滚动辅助函数 */
+  function smoothScrollTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var navH = 68;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
