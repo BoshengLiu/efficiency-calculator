@@ -13,7 +13,7 @@
 python server.py
 ```
 
-浏览器会打开 **http://localhost:8000**。
+浏览器会打开 http://localhost:8000。
 
 首页提供 6 个互动工具入口与案例展示，点击「立即咨询」可打开联系弹窗。
 
